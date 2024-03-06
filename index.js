@@ -2,8 +2,6 @@ const child_process = require("child_process");
 const anki = require("./anki");
 const { addYoudao, addYoudaoBatch } = require("./youdao");
 const { getSelection } = require("./functions");
-const logger = require("./logger");
-logger.info('start index.js')
 
 const HTML = "HTML";
 const YOUDAO = "YOUDAO";
@@ -15,12 +13,12 @@ const funcMap = {
 };
 
 const menus = `
-'Basic-Front',
-'Basic-Back',
-'Cloze-Text',
-'Basic-Front-${HTML}',
-'Basic-Back-${HTML}',
-'Cloze-Text-${HTML}',
+'@Basic-Front',
+'@Basic-Back',
+'@Cloze-Text',
+'@Basic-Front-${HTML}',
+'@Basic-Back-${HTML}',
+'@Cloze-Text-${HTML}',
 '${YOUDAO}',
 '${YOUDAO_BATCH}'
 `;

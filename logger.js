@@ -17,7 +17,7 @@ class NotificationTransport extends Transport {
   }
 }
 
-const dirname = __dirname;
+const dirname = __dirname + '/logs/';
 const logger = winston.createLogger({
   level: "info",
     format: winston.format.json(),
