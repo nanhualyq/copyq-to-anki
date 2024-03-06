@@ -1,9 +1,7 @@
-const child_process = require("child_process");
+const { execCopyq } = require("./copyq");
 exports.getUrl = function () {
-  return child_process
-    .execSync(`copyq selection text/x-moz-url-priv`)
-    .toString();
+  return execCopyq('selection text/x-moz-url-priv')
 };
 exports.getSelection = function (mime = '') {
-  return child_process.execSync(`copyq selection ${mime}`).toString();
+  return execCopyq(`selection ${mime}`);
 };

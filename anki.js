@@ -1,7 +1,7 @@
-const child_process = require("child_process");
 const _ = require("lodash");
 const { getUrl } = require("./functions");
 const logger = require("./logger");
+const { execCopyq } = require("./copyq");
 
 exports.post = async function post(action, params = {}) {
   logger.info("anki-connect", {api: { action, params }});
@@ -27,7 +27,7 @@ function fillDefault(params) {
   if (!params.note) {
     return;
   }
-  const title = child_process.execSync("copyq currentWindowTitle").toString();
+  const title = execCopyq('currentWindowTitle');
   const url = getUrl();
   _.set(params.note, "fields.Url", url);
   _.set(params.note, "fields.Title", title);

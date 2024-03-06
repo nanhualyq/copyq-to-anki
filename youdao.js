@@ -1,8 +1,8 @@
-const child_process = require("child_process");
 const cheerio = require("cheerio");
 const { getUrl, getSelection } = require("./functions");
 const { post } = require("./anki");
 const logger = require("./logger");
+const { execCopyq } = require("./copyq");
 
 async function makeNote(text) {
   if (!text) {
@@ -48,8 +48,8 @@ async function makeNote(text) {
       },
     ],
   };
-};
-exports.makeNote = makeNote
+}
+exports.makeNote = makeNote;
 
 exports.addYoudao = async function addYoudao() {
   const selection = getSelection();
@@ -91,7 +91,5 @@ exports.addYoudaoBatch = async function addYoudaoBatch() {
       message += `\n${key}: ${count[key]}`;
     }
   }
-  child_process.execSync(
-    `copyq popup '${message}'`
-  );
+  execCopyq(`popup '${message}'`);
 };

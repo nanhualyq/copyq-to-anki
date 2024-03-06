@@ -1,6 +1,6 @@
 const winston = require("winston");
-const Transport = require('winston-transport');
-const child_process = require("child_process");
+const Transport = require("winston-transport");
+const { execCopyq } = require("./copyq");
 
 class NotificationTransport extends Transport {
   constructor(opts) {
@@ -8,19 +8,17 @@ class NotificationTransport extends Transport {
   }
 
   log(info, callback) {
-    child_process.execSync(
-      `copyq notification '.title' 'Error' '.message' '${info.message}'`
-    );
+    execCopyq(`notification '.title' 'Error' '.message' '${info.message}'`);
 
     // Perform the writing to the remote service
     callback();
   }
 }
 
-const dirname = __dirname + '/logs/';
+const dirname = __dirname + "/logs/";
 const logger = winston.createLogger({
   level: "info",
-    format: winston.format.json(),
+  format: winston.format.json(),
   //   defaultMeta: { service: 'user-service' },
   transports: [
     new winston.transports.File({

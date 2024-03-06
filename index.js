@@ -1,7 +1,7 @@
-const child_process = require("child_process");
 const anki = require("./anki");
 const { addYoudao, addYoudaoBatch } = require("./youdao");
 const { getSelection } = require("./functions");
+const { execCopyq } = require("./copyq");
 
 const HTML = "HTML";
 const YOUDAO = "YOUDAO";
@@ -22,7 +22,7 @@ const menus = `
 '${YOUDAO}',
 '${YOUDAO_BATCH}'
 `;
-const res = child_process.execSync(`copyq eval "menuItems(${menus})"`);
+const res = execCopyq(`eval "menuItems(${menus})"`);
 const action = res.toString().trim();
 if (action) {
   const func = funcMap[action];
