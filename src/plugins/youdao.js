@@ -50,8 +50,8 @@ module.exports = async function (cb) {
       await new Promise((resolve) => setTimeout(resolve, 4000));
     }
     try {
-      const note = await parseWord(word);
-      cb(note.fields);
+      const fields = await parseWord(word);
+      cb(fields);
       success++;
     } catch (error) {
       childLogger.error("word parse", error);
