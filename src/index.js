@@ -1,54 +1,47 @@
-const { addYoudao, addYoudaoBatch } = require("./plugins/youdao");
-const { execCopyq, getSelection } = require("./copyq");
+const { execCopyq } = require("./copyq");
 const { addTr, addTrBatch } = require("./plugins/tr");
 const { postAnki } = require("./anki");
+const menusJson = require("../menus.json");
+const { cloneDeepWith } = require("lodash");
 
-const HTML = "HTML";
-const YOUDAO = "YOUDAO";
-const YOUDAO_BATCH = "YOUDAO_BATCH";
 const TR = "TR";
 const TR_BATCH = "TR_BATCH";
 
 const funcMap = {
-  [YOUDAO]: addYoudao,
-  [YOUDAO_BATCH]: addYoudaoBatch,
   [TR]: addTr,
   [TR_BATCH]: addTrBatch,
 };
 
 const menus = `
-'@Basic-Front',
-'@Basic-Back',
-'@Cloze-Text',
-'@Basic-Front-${HTML}',
-'@Basic-Back-${HTML}',
-'@Cloze-Text-${HTML}',
-'${YOUDAO}',
-'${YOUDAO_BATCH}',
+${menusJson.map((menu) => `'${menu.name}'`).join(",")},
 '${TR}',
 '${TR_BATCH}'
 `;
 const res = execCopyq(`eval "menuItems(${menus})"`);
 const action = res.toString().trim();
 if (action) {
+  const menu = menusJson.find((o) => o.name === action);
+  if (menu) {
+    return execMenu(menu);
+  }
   const func = funcMap[action];
   if (typeof func === "function") {
     return func();
   }
-  const args = action?.split("-") || [];
-  addCard(...args);
 }
 
-function addCard(modelName, field, type) {
-  const mime = type === HTML ? "text/html" : "";
-  const selection = getSelection(mime);
-  postAnki("guiAddCards", {
-    note: {
-      deckName: "Default",
-      modelName,
-      fields: {
-        [field]: selection,
-      },
-    },
+function execMenu(menu) {
+  let preAction = (cb) => cb();
+  if (menu.plugin) {
+    preAction = require(`./plugins/${menu.plugin}`);
+  }
+  preAction((pluginResult) => {
+    const copyq = require("./copyq");
+    const newMenu = cloneDeepWith(menu, function (val) {
+      if (typeof val === "string") {
+        return val.replaceAll(/\{\{(.+?)\}\}/g, (m, p1) => eval(p1));
+      }
+    });
+    postAnki(newMenu.anki.action, newMenu.anki.params);
   });
 }

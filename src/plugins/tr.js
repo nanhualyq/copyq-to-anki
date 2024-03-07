@@ -1,29 +1,12 @@
 const Cheerio = require("cheerio");
 const { execCopyq, getSelection } = require("../copyq");
-const { postAnki } = require("../anki");
+const logger = require("../logger");
 
-function addTr(tr) {
-  const selection = tr || getSelection("text/html");
-  const $ = Cheerio.load(selection);
-  $tds = $("td");
-  postAnki("addNote", {
-    note: {
-      deckName: "Default",
-      modelName: "@Basic",
-      fields: {
-        Front: $tds.eq(0).html() || "",
-        Back: $tds.eq(1).html() || "",
-      },
-    },
-  });
-}
-exports.addTr = addTr;
-
-exports.addTrBatch = function () {
+module.exports = function (cb) {
   const selection = getSelection("text/html");
   const $ = Cheerio.load(selection);
   $("tr").each((i, e) => {
-    addTr(e);
+    cb($(e).find("td"));
   });
-  execCopyq(`popup finish`);
+  execCopyq(`popup 'Table Row finish: ${$("tr").length}'`);
 };

@@ -8,6 +8,9 @@ exports.execCopyq = execCopyq;
 exports.getUrl = function () {
   return execCopyq("selection text/x-moz-url-priv");
 };
+exports.getTitle = function () {
+  return execCopyq("currentWindowTitle");
+};
 exports.getSelection = function (mime = "") {
   return execCopyq(`selection ${mime}`);
 };

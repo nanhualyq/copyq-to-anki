@@ -1,0 +1,150 @@
+[
+  {
+    "name": "@Basic-Front",
+    "anki": {
+      "action": "guiAddCards",
+      "params": {
+        "note": {
+          "deckName": "Default",
+          "modelName": "@Basic",
+          "fields": {
+            "Front": "{{copyq.getSelection()}}",
+            "Url": "{{copyq.getUrl()}}",
+            "Title": "{{copyq.getTitle()}}"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "@Basic-Back",
+    "anki": {
+      "action": "guiAddCards",
+      "params": {
+        "note": {
+          "deckName": "Default",
+          "modelName": "@Basic",
+          "fields": {
+            "Back": "{{copyq.getSelection()}}",
+            "Url": "{{copyq.getUrl()}}",
+            "Title": "{{copyq.getTitle()}}"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "@Cloze-Text",
+    "anki": {
+      "action": "guiAddCards",
+      "params": {
+        "note": {
+          "deckName": "Default",
+          "modelName": "@Cloze",
+          "fields": {
+            "Text": "{{copyq.getSelection()}}",
+            "Url": "{{copyq.getUrl()}}",
+            "Title": "{{copyq.getTitle()}}"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "@Basic-Front-HTML",
+    "anki": {
+      "action": "guiAddCards",
+      "params": {
+        "note": {
+          "deckName": "Default",
+          "modelName": "@Basic",
+          "fields": {
+            "Front": "{{copyq.getSelection('text/html')}}",
+            "Url": "{{copyq.getUrl()}}",
+            "Title": "{{copyq.getTitle()}}"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "@Basic-Back-HTML",
+    "anki": {
+      "action": "guiAddCards",
+      "params": {
+        "note": {
+          "deckName": "Default",
+          "modelName": "@Basic",
+          "fields": {
+            "Back": "{{copyq.getSelection('text/html')}}",
+            "Url": "{{copyq.getUrl()}}",
+            "Title": "{{copyq.getTitle()}}"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "@Cloze-Text-HTML",
+    "anki": {
+      "action": "guiAddCards",
+      "params": {
+        "note": {
+          "deckName": "Default",
+          "modelName": "@Cloze",
+          "fields": {
+            "Text": "{{copyq.getSelection('text/html')}}",
+            "Url": "{{copyq.getUrl()}}",
+            "Title": "{{copyq.getTitle()}}"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "Youdao",
+    "plugin": "youdao",
+    "anki": {
+      "action": "addNote",
+      "params": {
+        "note": {
+          "deckName": "AI English",
+          "modelName": "AH YouDao",
+          "fields": {
+            "Word": "{{pluginResult.Word}}",
+            "Exp": "{{pluginResult.Exp}}",
+            "Phone": "{{pluginResult.Phone}}",
+            "Url": "{{copyq.getUrl()}}",
+            "Title": "{{copyq.getTitle()}}"
+          },
+          "audio": [
+            {
+              "url": "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q={{pluginResult.Word}}",
+              "filename": "google-{{Date.now()}}.mp3",
+              "fields": ["Audio"]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "name": "Table Row",
+    "plugin": "tr",
+    "anki": {
+      "action": "addNote",
+      "params": {
+        "note": {
+          "deckName": "Default",
+          "modelName": "@Basic",
+          "fields": {
+            "Front": "{{pluginResult.eq(1).html() || ''}}",
+            "Back": "{{pluginResult.eq(0).html() || ''}}",
+            "Url": "{{copyq.getUrl()}}",
+            "Title": "{{copyq.getTitle()}}"
+          }
+        }
+      }
+    }
+  }
+]

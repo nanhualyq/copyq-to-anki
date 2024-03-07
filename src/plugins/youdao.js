@@ -1,9 +1,9 @@
 const cheerio = require("cheerio");
 const logger = require("../logger");
-const { execCopyq, getUrl, getSelection } = require("../copyq");
-const { postAnki } = require("../anki");
+const { execCopyq, getSelection } = require("../copyq");
+const childLogger = logger.child({ service: "plugin.youdao" });
 
-async function makeNote(text) {
+async function parseWord(text) {
   if (!text) {
     throw Error("no text");
   }
@@ -30,65 +30,32 @@ async function makeNote(text) {
   });
 
   return {
-    deckName: "AI English",
-    modelName: "AH YouDao",
-    fields: {
-      Word: text,
-      Exp,
-      Phone: $(".phone_con").text(),
-      Url: getUrl(),
-    },
-    audio: [
-      {
-        url: `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=${text}`,
-        filename: `google-${Date.now()}.mp3`,
-        // skipHash: "7e2c2f954ef6051373ba916f000168dc",
-        fields: ["Audio"],
-      },
-    ],
+    Word: text,
+    Exp,
+    Phone: $(".phone_con").text(),
   };
 }
-exports.makeNote = makeNote;
 
-exports.addYoudao = async function addYoudao() {
-  const selection = getSelection();
-  const note = await makeNote(selection);
-  postAnki("guiAddCards", { note });
-};
-
-exports.addYoudaoBatch = async function addYoudaoBatch() {
+module.exports = async function (cb) {
   const text = getSelection();
-  const count = {
-    total: 0,
-    skip: 0,
-    error: 0,
-  };
-  let lastTime = 0;
-  for (const line of text?.split("\n")) {
-    count.total++;
-    if (!line.trim() || line.length > 200) {
-      logger.warn("skip" + " " + count.total + " " + line);
-      count.skip++;
+  const arr = text?.split("\n");
+  let success = 0;
+  for (let i = 0; i < arr.length; i++) {
+    const word = arr[i].trim();
+    if (!word || word.length > 200) {
+      childLogger.info("skip line", { word });
       continue;
     }
+    if (i > 0) {
+      await new Promise((resolve) => setTimeout(resolve, 4000));
+    }
     try {
-      if (Date.now() - lastTime < 4000) {
-        await new Promise((resolve) => setTimeout(resolve, 4000));
-      }
-      logger.info(count.total + " " + line);
-      const note = await makeNote(line);
-      lastTime = Date.now();
-      await postAnki("addNote", { note });
+      const note = await parseWord(word);
+      cb(note.fields);
+      success++;
     } catch (error) {
-      count.error++;
-      logger.error(error);
+      childLogger.error("word parse", error);
     }
   }
-  let message = `Success: ${count.total - count.skip - count.error}`;
-  for (const key of ["skip", "error"]) {
-    if (count[key]) {
-      message += `\n${key}: ${count[key]}`;
-    }
-  }
-  execCopyq(`popup '${message}'`);
+  execCopyq(`popup 'youdao batch finish: ${success}/${arr.length}'`);
 };
