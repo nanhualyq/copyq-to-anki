@@ -1,8 +1,7 @@
 const cheerio = require("cheerio");
-const { getUrl, getSelection } = require("./functions");
-const { post } = require("./anki");
-const logger = require("./logger");
-const { execCopyq } = require("./copyq");
+const logger = require("../logger");
+const { execCopyq, getUrl, getSelection } = require("../copyq");
+const { postAnki } = require("../anki");
 
 async function makeNote(text) {
   if (!text) {
@@ -54,7 +53,7 @@ exports.makeNote = makeNote;
 exports.addYoudao = async function addYoudao() {
   const selection = getSelection();
   const note = await makeNote(selection);
-  post("guiAddCards", { note });
+  postAnki("guiAddCards", { note });
 };
 
 exports.addYoudaoBatch = async function addYoudaoBatch() {
@@ -79,7 +78,7 @@ exports.addYoudaoBatch = async function addYoudaoBatch() {
       logger.info(count.total + " " + line);
       const note = await makeNote(line);
       lastTime = Date.now();
-      await post("addNote", { note });
+      await postAnki("addNote", { note });
     } catch (error) {
       count.error++;
       logger.error(error);

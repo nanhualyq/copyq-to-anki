@@ -1,6 +1,7 @@
 const winston = require("winston");
 const Transport = require("winston-transport");
 const { execCopyq } = require("./copyq");
+const path = require('path')
 
 class NotificationTransport extends Transport {
   constructor(opts) {
@@ -15,7 +16,7 @@ class NotificationTransport extends Transport {
   }
 }
 
-const dirname = __dirname + "/logs/";
+const dirname = path.resolve(__dirname, '../logs')
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.json(),

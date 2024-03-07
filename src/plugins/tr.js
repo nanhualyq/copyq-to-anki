@@ -1,13 +1,12 @@
 const Cheerio = require("cheerio");
-const { getSelection } = require("./functions");
-const { post } = require("./anki");
-const { execCopyq } = require("./copyq");
+const { execCopyq, getSelection } = require("../copyq");
+const { postAnki } = require("../anki");
 
 function addTr(tr) {
   const selection = tr || getSelection("text/html");
   const $ = Cheerio.load(selection);
   $tds = $("td");
-  post("addNote", {
+  postAnki("addNote", {
     note: {
       deckName: "Default",
       modelName: "@Basic",

@@ -1,14 +1,13 @@
-const anki = require("./anki");
-const { addYoudao, addYoudaoBatch } = require("./youdao");
-const { getSelection } = require("./functions");
-const { execCopyq } = require("./copyq");
-const { addTr, addTrBatch } = require("./tr");
+const { addYoudao, addYoudaoBatch } = require("./plugins/youdao");
+const { execCopyq, getSelection } = require("./copyq");
+const { addTr, addTrBatch } = require("./plugins/tr");
+const { postAnki } = require("./anki");
 
 const HTML = "HTML";
 const YOUDAO = "YOUDAO";
 const YOUDAO_BATCH = "YOUDAO_BATCH";
-const TR = 'TR'
-const TR_BATCH = 'TR_BATCH'
+const TR = "TR";
+const TR_BATCH = "TR_BATCH";
 
 const funcMap = {
   [YOUDAO]: addYoudao,
@@ -43,7 +42,7 @@ if (action) {
 function addCard(modelName, field, type) {
   const mime = type === HTML ? "text/html" : "";
   const selection = getSelection(mime);
-  anki.post("guiAddCards", {
+  postAnki("guiAddCards", {
     note: {
       deckName: "Default",
       modelName,

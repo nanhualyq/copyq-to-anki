@@ -1,9 +1,9 @@
 const _ = require("lodash");
-const { getUrl } = require("./functions");
+const { getUrl } = require("./copyq");
 const logger = require("./logger");
 const { execCopyq } = require("./copyq");
 
-exports.post = async function post(action, params = {}) {
+exports.postAnki = async function (action, params = {}) {
   logger.info("anki-connect", {api: { action, params }});
   return fetch("http://127.0.0.1:8765", {
     method: "POST",
