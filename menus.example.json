@@ -1,12 +1,12 @@
 [
   {
-    "name": "@Basic-Front",
+    "name": "Basic-Front",
     "anki": {
       "action": "guiAddCards",
       "params": {
         "note": {
           "deckName": "Default",
-          "modelName": "@Basic",
+          "modelName": "Basic",
           "fields": {
             "Front": "{{copyq.getSelection()}}",
             "Url": "{{copyq.getUrl()}}",
@@ -17,13 +17,13 @@
     }
   },
   {
-    "name": "@Basic-Back",
+    "name": "Basic-Back",
     "anki": {
       "action": "guiAddCards",
       "params": {
         "note": {
           "deckName": "Default",
-          "modelName": "@Basic",
+          "modelName": "Basic",
           "fields": {
             "Back": "{{copyq.getSelection()}}",
             "Url": "{{copyq.getUrl()}}",
@@ -34,13 +34,13 @@
     }
   },
   {
-    "name": "@Cloze-Text",
+    "name": "Cloze-Text",
     "anki": {
       "action": "guiAddCards",
       "params": {
         "note": {
           "deckName": "Default",
-          "modelName": "@Cloze",
+          "modelName": "Cloze",
           "fields": {
             "Text": "{{copyq.getSelection()}}",
             "Url": "{{copyq.getUrl()}}",
@@ -51,13 +51,13 @@
     }
   },
   {
-    "name": "@Basic-Front-HTML",
+    "name": "Basic-Front-HTML",
     "anki": {
       "action": "guiAddCards",
       "params": {
         "note": {
           "deckName": "Default",
-          "modelName": "@Basic",
+          "modelName": "Basic",
           "fields": {
             "Front": "{{copyq.getSelection('text/html')}}",
             "Url": "{{copyq.getUrl()}}",
@@ -68,13 +68,13 @@
     }
   },
   {
-    "name": "@Basic-Back-HTML",
+    "name": "Basic-Back-HTML",
     "anki": {
       "action": "guiAddCards",
       "params": {
         "note": {
           "deckName": "Default",
-          "modelName": "@Basic",
+          "modelName": "Basic",
           "fields": {
             "Back": "{{copyq.getSelection('text/html')}}",
             "Url": "{{copyq.getUrl()}}",
@@ -85,13 +85,13 @@
     }
   },
   {
-    "name": "@Cloze-Text-HTML",
+    "name": "Cloze-Text-HTML",
     "anki": {
       "action": "guiAddCards",
       "params": {
         "note": {
           "deckName": "Default",
-          "modelName": "@Cloze",
+          "modelName": "Cloze",
           "fields": {
             "Text": "{{copyq.getSelection('text/html')}}",
             "Url": "{{copyq.getUrl()}}",
@@ -136,7 +136,7 @@
       "params": {
         "note": {
           "deckName": "Default",
-          "modelName": "@Basic",
+          "modelName": "Basic",
           "fields": {
             "Front": "{{pluginResult.eq(1).html() || ''}}",
             "Back": "{{pluginResult.eq(0).html() || ''}}",
