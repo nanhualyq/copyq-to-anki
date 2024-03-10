@@ -27,9 +27,9 @@ function fillDefault(params) {
   if (!params.note) {
     return;
   }
-  const title = execCopyq('currentWindowTitle');
-  const url = getUrl();
-  _.set(params.note, "fields.Url", url);
-  _.set(params.note, "fields.Title", title);
+  // const title = execCopyq('currentWindowTitle');
+  // const url = getUrl();
+  // _.set(params.note, "fields.Url", url);
+  // _.set(params.note, "fields.Title", title);
   return params;
 }
