@@ -1,19 +1,26 @@
 const { execCopyq } = require("./copyq");
 const { postAnki } = require("./anki");
-const menusJson = require("../menus.json");
 const { cloneDeepWith } = require("lodash");
 
+const menusJson = (function () {
+  try {
+    return require("../menus.json");
+  } catch (error) {
+    return require("../menus.example.json");
+  }
+})();
+
 exports.show = function () {
-    const menus = menusJson.map((menu) => `'${menu.name}'`).join(",");
-    const res = execCopyq(`eval "menuItems(${menus})"`);
-    const action = res.trim();
-    if (action) {
-      const menu = menusJson.find((o) => o.name === action);
-      if (menu) {
-        execMenu(menu);
-      }
+  const menus = menusJson.map((menu) => `'${menu.name}'`).join(",");
+  const res = execCopyq(`eval "menuItems(${menus})"`);
+  const action = res.trim();
+  if (action) {
+    const menu = menusJson.find((o) => o.name === action);
+    if (menu) {
+      execMenu(menu);
     }
-}
+  }
+};
 
 function execMenu(menu) {
   let preAction = (cb) => cb();
