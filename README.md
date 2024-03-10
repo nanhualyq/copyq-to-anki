@@ -12,3 +12,10 @@ Suggested one-click trigger via global shortcut, you can register a global short
 
 # Demo
 ![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/4d8ab07d-b3cb-4b39-8994-917dcda0af1f)
+
+
+<details>
+  <summary>With style</summary>
+  
+  ![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/afb16f5a-79e0-4728-84e6-e276189f1d00)
+</details>
