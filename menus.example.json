@@ -108,8 +108,8 @@
       "action": "addNote",
       "params": {
         "note": {
-          "deckName": "AI English",
-          "modelName": "AH YouDao",
+          "deckName": "English",
+          "modelName": "@YouDao",
           "fields": {
             "Word": "{{pluginResult.Word}}",
             "Exp": "{{pluginResult.Exp}}",
