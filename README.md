@@ -19,3 +19,10 @@ Suggested one-click trigger via global shortcut, you can register a global short
   
   ![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/afb16f5a-79e0-4728-84e6-e276189f1d00)
 </details>
+
+<details>
+  <summary>Add source</summary>
+  
+![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/d63d89bb-5033-4b2f-ba1e-1d62f9391c91)
+</details>
+
