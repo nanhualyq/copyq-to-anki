@@ -11,7 +11,7 @@ node src/index.js
 Suggested one-click trigger via global shortcut, you can register a global shortcut key for this script through copyq or operating system settings.
 
 # Demo
-![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/4d8ab07d-b3cb-4b39-8994-917dcda0af1f)
+![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/a90833a7-6045-4087-ab56-21fc8cdd1d69)
 
 
 <details>
@@ -38,3 +38,13 @@ Suggested one-click trigger via global shortcut, you can register a global short
 ![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/35c79ace-9c39-445c-aa26-fb87c88eadb6)
 </details>
 
+<details>
+  <summary>Table Rows </summary>
+  
+![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/94233280-8c06-4f9f-beb7-58c4331a5674)
+</details>
+
+# FAQ
+- How to customize your own menu?
+
+Copy `menus.example.json` and rename it to `menus.json`. You can modify it as you like.
