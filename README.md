@@ -46,4 +46,5 @@ Suggested one-click trigger via global shortcut, you can register a global short
 
 # FAQ
 - How to customize your own menu?
+
 Copy `menus.example.json` and rename it to `menus.json`. You can modify it as you like.
