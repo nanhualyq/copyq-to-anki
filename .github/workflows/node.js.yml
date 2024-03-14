@@ -37,11 +37,11 @@ jobs:
       uses: TheDoctor0/zip-release@0.7.6
       with:
         # Filename for archive
-        filename: 'release.zip'
+        # filename: 'release.zip'
         # Base path for archive files
-        # path: # optional, default is .
+        path: dist
         # Working directory before zipping
-        directory: dist
+        # directory: dist
         # List of excluded files / directories
         # exclusions: # optional, default is 
         # List of excluded files / directories with recursive wildcards (only applies on Windows with `zip` type)
@@ -49,7 +49,7 @@ jobs:
         # Provide any custom parameters to the zipping command
         # custom: # optional, default is 
         # Tool to use for archiving
-        type: 'zip'
+        # type: 'zip'
         # An extra command that will run before zipping
         # command: # optional, default is 
 
