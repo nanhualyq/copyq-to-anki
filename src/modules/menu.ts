@@ -1,7 +1,7 @@
 import { cloneDeepWith } from "lodash";
 import * as copyq from "./copyq";
 import { readFileSync } from "fs";
-import { DATA_DIR, IS_PROD } from "./init";
+import { DATA_DIR } from "./init";
 import { postAnki } from "./anki";
 
 interface Menu {
@@ -10,7 +10,7 @@ interface Menu {
 }
 
 function readMenus(): Menu[] {
-  const MENU_FILE =  `${DATA_DIR}/${IS_PROD ? 'menus.json' : 'menus.example.json'}`
+  const MENU_FILE =  `${DATA_DIR}/menus.json`
   const text = readFileSync(MENU_FILE, "utf-8");
   const menus = JSON.parse(text);
   if (!Array.isArray(menus)) {

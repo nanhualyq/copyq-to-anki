@@ -46,7 +46,5 @@ Suggested one-click trigger via global shortcut, you can register a global short
 ![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/94233280-8c06-4f9f-beb7-58c4331a5674)
 </details>
 
-# FAQ
-- How to customize your own menu?
-
-Copy `menus.example.json` and rename it to `menus.json`. You can modify it as you like.
+## TODO
+- github actions
