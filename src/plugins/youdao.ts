@@ -1,9 +1,10 @@
-const cheerio = require("cheerio");
-const logger = require("../logger");
-const { execCopyq, getSelection } = require("../copyq");
+import { load } from "cheerio";
+import logger from "../modules/logger";
+import { execCopyq, getSelection } from "../modules/copyq";
+
 const childLogger = logger.child({ service: "plugin.youdao" });
 
-async function parseWord(text) {
+async function parseWord(text: string) {
   if (!text) {
     throw Error("no text");
   }
@@ -11,7 +12,7 @@ async function parseWord(text) {
     `https://dict.youdao.com/result?word=${text}&lang=en`
   ).then((res) => res.text());
 
-  const $ = cheerio.load(res);
+  const $ = load(res);
 
   let expList = $("#catalogue_author .word-exp");
   if (expList.length === 0) {
@@ -36,7 +37,7 @@ async function parseWord(text) {
   };
 }
 
-module.exports = async function (cb) {
+export default async function (cb: (arg1?: unknown) => void) {
   const text = getSelection();
   const arr = text?.split("\n");
   let success = 0;
@@ -58,4 +59,4 @@ module.exports = async function (cb) {
     }
   }
   execCopyq(`popup 'youdao batch finish: ${success}/${arr.length}'`);
-};
+}

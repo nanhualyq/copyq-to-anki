@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node esbuild.mjs"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +13,17 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
     "lodash": "^4.17.21",
+    "node-notifier": "^10.0.1",
     "winston": "^3.12.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.0",
+    "@types/node": "^20.11.26",
+    "@types/node-notifier": "^8.0.5",
+    "esbuild": "0.20.1",
+    "esbuild-plugin-lodash": "^1.2.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.2",
+    "typescript-eslint": "^7.2.0"
   }
 }

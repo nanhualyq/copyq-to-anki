@@ -108,7 +108,7 @@
       "action": "addNote",
       "params": {
         "note": {
-          "deckName": "English",
+          "deckName": "Default",
           "modelName": "@YouDao",
           "fields": {
             "Word": "{{pluginResult.Word}}",
