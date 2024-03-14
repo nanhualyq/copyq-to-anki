@@ -7,7 +7,7 @@
 ```
 npm install
 npm run build
-node dist/out.js
+node dist/index.js
 ```
 
 Suggested one-click trigger via global shortcut, you can register a global shortcut key for this script through copyq or operating system settings.
