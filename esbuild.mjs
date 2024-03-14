@@ -1,5 +1,6 @@
 import * as esbuild from "esbuild";
 import lodashTransformer from "esbuild-plugin-lodash";
+import copy from "esbuild-plugin-copy";
 
 const result = await esbuild.build({
   entryPoints: ["src/index.ts"],
@@ -11,8 +12,13 @@ const result = await esbuild.build({
   logLevel: "info",
   minify: true,
   metafile: true,
-  outfile: "dist/out.js",
-  plugins: [lodashTransformer()],
+  outdir: "dist",
+  plugins: [lodashTransformer(), copy({
+    assets: {
+      from: ['menus.example.json'],
+      to: ['menus.json']
+    }
+  })],
 });
 
 // console.log(await esbuild.analyzeMetafile(result.metafile))

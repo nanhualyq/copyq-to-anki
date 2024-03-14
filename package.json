@@ -21,6 +21,7 @@
     "@types/node": "^20.11.26",
     "@types/node-notifier": "^8.0.5",
     "esbuild": "0.20.1",
+    "esbuild-plugin-copy": "^2.1.1",
     "esbuild-plugin-lodash": "^1.2.0",
     "eslint": "^8.57.0",
     "typescript": "^5.4.2",
