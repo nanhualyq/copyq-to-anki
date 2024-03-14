@@ -37,7 +37,7 @@ jobs:
       uses: TheDoctor0/zip-release@0.7.6
       with:
         # Filename for archive
-        # filename: # default is release.zip
+        filename: 'release.zip'
         # Base path for archive files
         # path: # optional, default is .
         # Working directory before zipping
@@ -49,13 +49,14 @@ jobs:
         # Provide any custom parameters to the zipping command
         # custom: # optional, default is 
         # Tool to use for archiving
-        # type: # optional, default is zip
+        type: 'zip'
         # An extra command that will run before zipping
         # command: # optional, default is 
 
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0
       with:
+        allowUpdates: true
         artifacts: "release.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
           
