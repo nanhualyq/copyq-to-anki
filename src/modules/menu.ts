@@ -1,8 +1,8 @@
 import { cloneDeepWith } from "lodash";
-import * as copyq from "./copyq";
+import * as copyq from "./copyq.ts";
 import { readFileSync } from "fs";
-import { DATA_DIR } from "./init";
-import { postAnki } from "./anki";
+import { DATA_DIR } from "./consts.ts";
+import { postAnki } from "./anki.ts";
 
 interface Menu {
   name: string;
@@ -19,9 +19,23 @@ function readMenus(): Menu[] {
   return menus;
 }
 
+function getMenuItemsParams(menusJson: Menu[]) {
+  let str = ''
+  for (const menu of menusJson) {
+    if (!menu.name) {
+      throw 'Menu no name'
+    }
+    if (str) {
+      str += ','
+    }
+    str += `'${menu.name}'`
+  }
+  return str
+}
+
 export function show() {
   const menusJson = readMenus();
-  const menus = menusJson.map((menu) => `'${menu.name}'`).join(",");
+  const menus = getMenuItemsParams(menusJson)
   const res = copyq.execCopyq(`eval "menuItems(${menus})"`);
   const action = res.trim();
   if (action) {
@@ -54,3 +68,4 @@ async function execMenu(menu: Menu) {
     postAnki(newMenu.anki.action, newMenu.anki.params);
   });
 }
+

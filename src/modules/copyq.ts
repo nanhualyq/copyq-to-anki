@@ -5,7 +5,7 @@ export function execCopyq(command: string) {
 }
 
 export function getUrl() {
-  return execCopyq("selection text/x-moz-url-priv");
+  return getSelection("text/x-moz-url-priv");
 }
 export function getTitle() {
   return execCopyq("currentWindowTitle").trim();

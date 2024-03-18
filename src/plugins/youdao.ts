@@ -1,13 +1,10 @@
 import { load } from "cheerio";
-import logger from "../modules/logger";
 import { execCopyq, getSelection } from "../modules/copyq";
+import logger from "../modules/logger";
 
 const childLogger = logger.child({ service: "plugin.youdao" });
 
 async function parseWord(text: string) {
-  if (!text) {
-    throw Error("no text");
-  }
   const res = await fetch(
     `https://dict.youdao.com/result?word=${text}&lang=en`
   ).then((res) => res.text());

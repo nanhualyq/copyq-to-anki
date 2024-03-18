@@ -1,5 +1,4 @@
 node_modules/
 logs/
-menus.json
-ts-out/
 dist/
+coverage/

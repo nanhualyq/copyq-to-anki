@@ -47,4 +47,4 @@ Suggested one-click trigger via global shortcut, you can register a global short
 </details>
 
 ## TODO
-- github actions
+- jest

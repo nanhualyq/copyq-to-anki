@@ -3,7 +3,7 @@ import { notify } from "node-notifier";
 import { createLogger, format, transports } from "winston";
 
 import Transport from "winston-transport";
-import { DATA_DIR, IS_PROD } from "./init";
+import { DATA_DIR, IS_PROD } from "./consts.ts";
 
 class NotificationTransport extends Transport {
   constructor(opts: undefined) {
@@ -51,4 +51,4 @@ if (IS_PROD) {
   );
 }
 
-export default logger;
+export default logger

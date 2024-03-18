@@ -1,6 +1,5 @@
-import './modules/init'
-import logger from "./modules/logger";
-import { show } from "./modules/menu";
+process.env.NODE_ENV = process.env.NODE_ENV || "production";
 
-logger.info("show menus");
+import "./modules/logger";
+import { show } from "./modules/menu.ts";
 show();
