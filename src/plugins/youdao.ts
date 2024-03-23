@@ -1,8 +1,5 @@
 import { load } from "cheerio";
-import { execCopyq, getSelection } from "../modules/copyq";
-import logger from "../modules/logger";
-
-const childLogger = logger.child({ service: "plugin.youdao" });
+import { Notification, clipboard } from "electron";
 
 async function parseWord(text: string) {
   const res = await fetch(
@@ -35,13 +32,13 @@ async function parseWord(text: string) {
 }
 
 export default async function (cb: (arg1?: unknown) => void) {
-  const text = getSelection();
+  const text = clipboard.readText("selection");
   const arr = text?.split("\n");
   let success = 0;
   for (let i = 0; i < arr.length; i++) {
     const word = arr[i].trim();
     if (!word || word.length > 200) {
-      childLogger.info("skip line", { word });
+      // childLogger.info("skip line", { word });
       continue;
     }
     if (i > 0) {
@@ -52,8 +49,12 @@ export default async function (cb: (arg1?: unknown) => void) {
       cb(fields);
       success++;
     } catch (error) {
-      childLogger.error("word parse", error);
+      // childLogger.error("word parse", error);
     }
   }
-  execCopyq(`popup 'youdao batch finish: ${success}/${arr.length}'`);
+  // execCopyq(`popup 'youdao batch finish: ${success}/${arr.length}'`);
+  new Notification({
+    title: "youdao batch finish",
+    body: `${success}/${arr.length}`,
+  }).show();
 }

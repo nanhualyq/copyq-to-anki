@@ -8,9 +8,9 @@
           "deckName": "Default",
           "modelName": "Basic",
           "fields": {
-            "Front": "{{copyq.getSelection()}}",
-            "Url": "{{copyq.getUrl()}}",
-            "Title": "{{copyq.getTitle()}}"
+            "Front": "{{context.clipboard.readText('selection')}}",
+            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
           }
         }
       }
@@ -25,9 +25,9 @@
           "deckName": "Default",
           "modelName": "Basic",
           "fields": {
-            "Back": "{{copyq.getSelection()}}",
-            "Url": "{{copyq.getUrl()}}",
-            "Title": "{{copyq.getTitle()}}"
+            "Back": "{{context.clipboard.readText('selection')}}",
+            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
           }
         }
       }
@@ -42,9 +42,9 @@
           "deckName": "Default",
           "modelName": "Cloze",
           "fields": {
-            "Text": "{{copyq.getSelection()}}",
-            "Url": "{{copyq.getUrl()}}",
-            "Title": "{{copyq.getTitle()}}"
+            "Text": "{{context.clipboard.readText('selection')}}",
+            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
           }
         }
       }
@@ -59,9 +59,9 @@
           "deckName": "Default",
           "modelName": "Basic",
           "fields": {
-            "Front": "{{copyq.getSelection('text/html')}}",
-            "Url": "{{copyq.getUrl()}}",
-            "Title": "{{copyq.getTitle()}}"
+            "Front": "{{context.clipboard.readHTML('selection')}}",
+            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
           }
         }
       }
@@ -76,9 +76,9 @@
           "deckName": "Default",
           "modelName": "Basic",
           "fields": {
-            "Back": "{{copyq.getSelection('text/html')}}",
-            "Url": "{{copyq.getUrl()}}",
-            "Title": "{{copyq.getTitle()}}"
+            "Back": "{{context.clipboard.readHTML('selection')}}",
+            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
           }
         }
       }
@@ -93,9 +93,9 @@
           "deckName": "Default",
           "modelName": "Cloze",
           "fields": {
-            "Text": "{{copyq.getSelection('text/html')}}",
-            "Url": "{{copyq.getUrl()}}",
-            "Title": "{{copyq.getTitle()}}"
+            "Text": "{{context.clipboard.readHTML('selection')}}",
+            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
           }
         }
       }
@@ -111,15 +111,15 @@
           "deckName": "Default",
           "modelName": "@YouDao",
           "fields": {
-            "Word": "{{pluginResult.Word}}",
-            "Exp": "{{pluginResult.Exp}}",
-            "Phone": "{{pluginResult.Phone}}",
-            "Url": "{{copyq.getUrl()}}",
-            "Title": "{{copyq.getTitle()}}"
+            "Word": "{{context.pluginResult.Word}}",
+            "Exp": "{{context.pluginResult.Exp}}",
+            "Phone": "{{context.pluginResult.Phone}}",
+            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
           },
           "audio": [
             {
-              "url": "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q={{pluginResult.Word}}",
+              "url": "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q={{context.pluginResult.Word}}",
               "filename": "google-{{Date.now()}}.mp3",
               "fields": ["Audio"]
             }
@@ -138,10 +138,10 @@
           "deckName": "Default",
           "modelName": "Basic",
           "fields": {
-            "Front": "{{pluginResult.eq(1).html() || ''}}",
-            "Back": "{{pluginResult.eq(0).html() || ''}}",
-            "Url": "{{copyq.getUrl()}}",
-            "Title": "{{copyq.getTitle()}}"
+            "Front": "{{context.pluginResult.eq(1).html() || ''}}",
+            "Back": "{{context.pluginResult.eq(0).html() || ''}}",
+            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
           }
         }
       }

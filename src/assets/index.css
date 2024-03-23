@@ -1,0 +1,97 @@
+button {
+    padding: .5rem;
+    cursor: pointer;
+}
+
+#quick-menu ul{
+    list-style: none;
+    padding: 0;
+}
+#quick-menu li {
+    cursor: pointer;
+    padding: .4rem 0;
+}
+#quick-menu li:hover {
+    background-color: #eee;
+}
+#quick-menu li.active {
+    background-color: #ddd;
+    font-weight: bold;
+}
+#quick-menu li > .shortcut {
+    text-decoration: underline;
+    color: gray;
+    font-size: small;
+    margin-right: .2rem;
+}
+
+#index-page{}
+#index-page .nav-box{
+    display: flex;
+}
+#index-page .nav-box label{
+    flex: 1;
+    border: 1px solid #ddd;
+    padding: .5rem 0;
+    cursor: pointer;
+    text-align: center;
+}
+#index-page .nav-box label.active{
+    color: #fff;
+    background-color: gray;
+    border: none;
+    font-weight: bold;
+}
+#index-page .nav-box label input{
+    display: none;
+}
+#settings-page form {
+    display: flex;
+    flex-direction: column;
+}
+#settings-page form label{
+    margin: .5rem 0;
+    display: flex;
+}
+#settings-page form label .text{
+    min-width: 12rem;
+}
+#notification {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+#notification .item{
+    border: 1px solid #000;
+    padding: 1rem;
+    border-radius: .5rem;
+    background-color: #fff;
+}
+#notification .item.success{
+    color: green;
+}
+#menus-page summary{
+    cursor: pointer;
+    padding: .5rem 0;
+}
+#menus-page summary:hover{
+    background-color: gray;
+    color: #fff;
+}
+#menus-page summary button{
+    padding: 0;
+    margin-left: 1rem;
+}
+#menus-page .buttons{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+#logs-page {
+    max-height: calc(100vh - 70px);
+    overflow: auto;
+    text-wrap: wrap;
+}
