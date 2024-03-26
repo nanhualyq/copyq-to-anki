@@ -4,8 +4,8 @@ on:
   push:
     tags:
       - v*.*.*
-# permissions:
-#   contents: write
+permissions:
+  contents: write
 
 jobs:
   release:
@@ -54,5 +54,3 @@ jobs:
             dist/*.tar.gz
             dist/*.yml
             dist/*.blockmap
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
