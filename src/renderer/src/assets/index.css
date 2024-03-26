@@ -1,0 +1,126 @@
+body {
+  margin: 0;
+}
+
+#layout-with-nav {
+  display: flex;
+  height: 100vh;
+}
+#layout-with-nav .right {
+  padding: 1rem;
+  box-sizing: border-box;
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+}
+#layout-with-nav .left {
+  background-color: #eee;
+  box-shadow: gray 1px 0;
+}
+#layout-with-nav .left ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+#layout-with-nav .left li > a {
+  color: #000;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: block;
+}
+#layout-with-nav .left li > a:hover {
+  text-decoration: underline;
+}
+#layout-with-nav .left li > a.active {
+  background-color: gray;
+  color: #fff;
+}
+
+#notification {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#notification .item {
+  padding: 1rem;
+  border-radius: 8px;
+}
+#notification .item.success {
+  background-color: green;
+  color: #fff;
+}
+
+#settings-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+#settings-page label > .text {
+  display: inline-block;
+  min-width: 12rem;
+}
+
+#menus-page summary {
+  padding: 0.4rem 0;
+}
+#menus-page summary:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+#menus-page summary > button {
+  margin-left: 1rem;
+}
+#menus-page .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+#menus-page pre {
+  text-wrap: wrap;
+}
+
+#logs-page {
+  text-wrap: wrap;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+#quick-menu {
+  border: 1px solid #000;
+  box-sizing: border-box;
+  height: 100vh;
+}
+#quick-menu input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 1.5rem;
+  border: none;
+  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDUwIDUwIj4KPHBhdGggZD0iTSAyMSAzIEMgMTEuNjAxNTYzIDMgNCAxMC42MDE1NjMgNCAyMCBDIDQgMjkuMzk4NDM4IDExLjYwMTU2MyAzNyAyMSAzNyBDIDI0LjM1NTQ2OSAzNyAyNy40NjA5MzggMzYuMDE1NjI1IDMwLjA5Mzc1IDM0LjM0Mzc1IEwgNDIuMzc1IDQ2LjYyNSBMIDQ2LjYyNSA0Mi4zNzUgTCAzNC41IDMwLjI4MTI1IEMgMzYuNjc5Njg4IDI3LjQyMTg3NSAzOCAyMy44Nzg5MDYgMzggMjAgQyAzOCAxMC42MDE1NjMgMzAuMzk4NDM4IDMgMjEgMyBaIE0gMjEgNyBDIDI4LjE5OTIxOSA3IDM0IDEyLjgwMDc4MSAzNCAyMCBDIDM0IDI3LjE5OTIxOSAyOC4xOTkyMTkgMzMgMjEgMzMgQyAxMy44MDA3ODEgMzMgOCAyNy4xOTkyMTkgOCAyMCBDIDggMTIuODAwNzgxIDEzLjgwMDc4MSA3IDIxIDcgWiI+PC9wYXRoPgo8L3N2Zz4K) no-repeat scroll 4px 4px;
+  background-size: 1rem;
+  padding-left: 1.5rem;
+}
+#quick-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#quick-menu li {
+  padding: 0.5rem;
+}
+#quick-menu li:hover {
+  background-color: #eee;
+}
+#quick-menu li.active {
+  background-color: gray;
+  color: #fff;
+}
+#quick-menu .shortcut {
+  font-size: smaller;
+  font-style: italic;
+  text-decoration: underline;
+  margin-right: 0.5rem;
+}
