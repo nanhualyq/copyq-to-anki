@@ -1,34 +1,49 @@
-# my-app
+# Download executable file
+https://github.com/nanhualyq/copyq-to-anki/releases
 
-An Electron application with React and TypeScript
+# Install
+1. copyq
+2. nodejs
+3. anki + plugin(anki-connect)
 
-## Recommended IDE Setup
-
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-
-## Project Setup
-
-### Install
-
-```bash
-$ npm install
+# Dev
+```
+npm install
+npm run dev
 ```
 
-### Development
+Suggested one-click trigger via global shortcut.
 
-```bash
-$ npm run dev
-```
+# Demo
+![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/a90833a7-6045-4087-ab56-21fc8cdd1d69)
 
-### Build
 
-```bash
-# For windows
-$ npm run build:win
+<details>
+  <summary>With style</summary>
 
-# For macOS
-$ npm run build:mac
+  ![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/afb16f5a-79e0-4728-84e6-e276189f1d00)
+</details>
 
-# For Linux
-$ npm run build:linux
-```
+<details>
+  <summary>Add source</summary>
+
+![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/d63d89bb-5033-4b2f-ba1e-1d62f9391c91)
+</details>
+
+<details>
+  <summary>Youdao Dict</summary>
+
+![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/1264c06f-68f8-4c45-bde6-08272a16764a)
+</details>
+
+<details>
+  <summary>Youdao Dict (Batch) </summary>
+
+![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/35c79ace-9c39-445c-aa26-fb87c88eadb6)
+</details>
+
+<details>
+  <summary>Table Rows </summary>
+
+![o](https://github.com/nanhualyq/copyq-to-anki/assets/6212850/94233280-8c06-4f9f-beb7-58c4331a5674)
+</details>
