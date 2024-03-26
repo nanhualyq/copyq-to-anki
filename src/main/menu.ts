@@ -1,18 +1,12 @@
-import { cloneDeepWith, get } from 'lodash'
-import { postAnki } from './anki'
+import { cloneDeepWith } from 'lodash'
 import { clipboard } from 'electron'
 import { execSync } from 'child_process'
-import tr from './plugins/tr'
-import youdao from './plugins/youdao'
-
-const plugins = {
-  tr,
-  youdao
-}
+import { verbose } from 'electron-log'
 
 interface Menu {
   name: string
   plugin: string
+  outPlugin: string
 }
 
 function execShell(code: string): string {
@@ -31,8 +25,12 @@ function execCode(pluginResult: unknown, code: string): string {
 export async function execMenu(menu: Menu): Promise<void> {
   let preAction = (cb: (arg1?: unknown) => void): void => cb()
   if (menu.plugin) {
-    preAction = get(plugins, menu.plugin)
+    preAction = (await import(`./plugins/${menu.plugin}.ts`))?.default
+    if (typeof preAction !== 'function') {
+      throw `${menu.plugin} is not a valid plugin`
+    }
   }
+  const outPlugin = (await import(`./outPlugins/${menu.outPlugin || 'anki'}.ts`))?.default
   preAction((pluginResult) => {
     const newMenu = cloneDeepWith(menu, function (val) {
       if (typeof val === 'string') {
@@ -40,6 +38,10 @@ export async function execMenu(menu: Menu): Promise<void> {
       }
       return
     })
-    postAnki(newMenu.anki.action, newMenu.anki.params)
+    verbose('outPlugin', menu.outPlugin, 'menu', newMenu)
+    if (typeof outPlugin !== 'function') {
+      throw `${menu.outPlugin} is not a valid plugin`
+    }
+    outPlugin(newMenu)
   })
 }

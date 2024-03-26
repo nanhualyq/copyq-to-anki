@@ -2,7 +2,7 @@ if (is.dev) {
   app.setPath('userData', app.getPath('userData') + '-dev')
 }
 
-import { app, BrowserWindow, ipcMain, globalShortcut } from 'electron'
+import { app, BrowserWindow, ipcMain, globalShortcut, dialog } from 'electron'
 import { electronApp, is, optimizer } from '@electron-toolkit/utils'
 import ipcMainMap from './ipcMainMap'
 import { registerGlobalShortcut } from './globalShortcut'
@@ -63,6 +63,13 @@ app.on('will-quit', () => {
 })
 
 errorHandler.startCatching({
-  showDialog: true
-  // onError
+  showDialog: true,
+  onError({ error }) {
+    dialog.showMessageBox({
+      title: 'An error occurred',
+      message: error.message,
+      detail: error.stack,
+      type: 'error'
+    })
+  }
 })

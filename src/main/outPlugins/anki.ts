@@ -1,8 +1,6 @@
-import { verbose } from 'electron-log/main'
 import settings from 'electron-settings'
 
-export async function postAnki(action: string, params = {}): Promise<unknown> {
-  verbose(action, params)
+async function postAnki(action: string, params = {}): Promise<unknown> {
   const ankiConnectHost =
     settings.getSync('settings.ankiConnectHost') || import.meta.env.VITE_ANKI_DEFAULT_HOST
   return fetch(ankiConnectHost + '', {
@@ -21,4 +19,8 @@ export async function postAnki(action: string, params = {}): Promise<unknown> {
         return res
       }
     })
+}
+
+export default function (menu): void {
+  postAnki(menu.anki.action, menu.anki.params)
 }

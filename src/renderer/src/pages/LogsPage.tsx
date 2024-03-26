@@ -1,19 +1,21 @@
 import { useEffect, useRef, useState } from 'react'
 
-export default function LogsPage() {
+export default function LogsPage(): JSX.Element {
   const [logs, setLogs] = useState(null)
   const preRef = useRef(null)
-  function scrollEnd() {
+  function scrollEnd(): void {
     if (preRef.current) {
-      const element: Element = preRef.current;
-      element.scrollTop = element.scrollHeight;
+      const element: Element = preRef.current
+      console.log(element, `element`)
+
+      element.scrollTop = element.scrollHeight
     }
   }
   if (logs) {
-      scrollEnd();
+    scrollEnd()
   }
   useEffect(() => {
-    function fetchLogs() {
+    function fetchLogs(): void {
       window.electron.ipcRenderer.invoke('getLogs').then(setLogs)
     }
     fetchLogs()
