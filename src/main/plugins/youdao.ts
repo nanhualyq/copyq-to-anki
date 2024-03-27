@@ -50,7 +50,7 @@ export default async function (cb: (arg1?: unknown) => void) {
       cb(fields);
       success++;
     } catch (err) {
-      error('word parse error:', error)
+      error('word parse error:', err)
     }
   }
   new Notification({
