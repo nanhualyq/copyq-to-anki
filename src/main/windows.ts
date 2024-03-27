@@ -69,6 +69,7 @@ export function createQuickMenuWindow(): BrowserWindow | undefined {
   const lastSize: unknown = settings.getSync('quick-menu-window-size') || {}
   win = createWindow({
     ...Object(lastSize),
+    show: false,
     frame: false,
     modal: true,
     alwaysOnTop: true,
@@ -83,6 +84,7 @@ export function createQuickMenuWindow(): BrowserWindow | undefined {
   const xPos = x < displaySize.width / 2 ? x : x - width
   const yPos = y < displaySize.height / 2 ? y : y - height
   win.setBounds({ x: xPos, y: yPos })
+  win.show()
 
   win.on('close', () => {
     if (win) {
