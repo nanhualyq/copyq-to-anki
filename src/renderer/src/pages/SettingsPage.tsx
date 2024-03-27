@@ -20,7 +20,7 @@ export default function SettingsPage(): JSX.Element {
 
   useEffect(() => {
     window.electron.ipcRenderer.invoke('settings:get', 'settings').then((res) => {
-      const json = res || clone(defaultForm)
+      const json = clone(res || defaultForm)
       if (!json.ankiConnectHost) {
         json.ankiConnectHost = import.meta.env.VITE_ANKI_DEFAULT_HOST
       }

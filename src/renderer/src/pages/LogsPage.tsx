@@ -6,8 +6,6 @@ export default function LogsPage(): JSX.Element {
   function scrollEnd(): void {
     if (preRef.current) {
       const element: Element = preRef.current
-      console.log(element, `element`)
-
       element.scrollTop = element.scrollHeight
     }
   }
