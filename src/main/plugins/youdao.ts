@@ -14,7 +14,7 @@ async function parseWord(text: string) {
     expList = $('#catalogue_author .trans-content')
   }
   const Exp = expList
-    .map((i, el) => $(el).text())
+    .map((_i, el) => $(el).text())
     .toArray()
     .filter((row) => !(row.startsWith('【名】') || row.includes('人名')))
     .join('<br>')
