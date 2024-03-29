@@ -21,6 +21,6 @@ async function postAnki(action: string, params = {}): Promise<unknown> {
     })
 }
 
-export default function (menu): void {
-  postAnki(menu.anki.action, menu.anki.params)
+export default function (menu): Promise<unknown> {
+  return postAnki(menu.anki.action, menu.anki.params)
 }

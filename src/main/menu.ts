@@ -31,6 +31,9 @@ export async function execMenu(menu: Menu): Promise<void> {
     }
   }
   const outPlugin = (await import(`./outPlugins/${menu.outPlugin || 'anki'}.ts`))?.default
+  if (typeof outPlugin !== 'function') {
+    throw `${menu.outPlugin} is not a valid plugin`
+  }
   preAction((pluginResult) => {
     const newMenu = cloneDeepWith(menu, function (val) {
       if (typeof val === 'string') {
@@ -39,9 +42,10 @@ export async function execMenu(menu: Menu): Promise<void> {
       return
     })
     verbose('outPlugin', menu.outPlugin, 'menu', newMenu)
-    if (typeof outPlugin !== 'function') {
-      throw `${menu.outPlugin} is not a valid plugin`
+    try {
+      outPlugin(newMenu)?.catch(verbose)
+    } catch (err) {
+      verbose(err)
     }
-    outPlugin(newMenu)
   })
 }
