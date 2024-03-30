@@ -8,7 +8,9 @@ import { execMenu as execMenuReal } from './menu'
 
 function getLogs(): string {
   try {
-    return execSync(`tail -n 100 ${path.join(app.getPath('userData'), 'logs/main.log')}`).toString()
+    return execSync(
+      `tail -n 1000 ${path.join(app.getPath('userData'), 'logs/main.log')}`
+    ).toString()
   } catch (error) {
     return ''
   }
