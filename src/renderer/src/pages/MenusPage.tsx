@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { NotificationContext } from '../components/Notification'
+import { escape } from 'lodash'
 
 export interface Menu {
   name: string
@@ -59,7 +60,7 @@ export default function MenusPage(): JSX.Element {
             contentEditable
             onBlur={(e): void => handleEdit(index, e.target.textContent)}
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(item, null, 2)
+              __html: escape(JSON.stringify(item, null, 2))
             }}
           ></pre>
         </details>

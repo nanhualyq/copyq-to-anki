@@ -6,11 +6,11 @@
       "params": {
         "note": {
           "deckName": "Default",
-          "modelName": "Basic",
+          "modelName": "@Basic",
           "fields": {
             "Front": "{{context.clipboard.readText('selection')}}",
-            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
-            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
+            "Url": "{{context.utils.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.utils.execShell('copyq currentWindowTitle')}}"
           }
         }
       }
@@ -23,11 +23,11 @@
       "params": {
         "note": {
           "deckName": "Default",
-          "modelName": "Basic",
+          "modelName": "@Basic",
           "fields": {
             "Back": "{{context.clipboard.readText('selection')}}",
-            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
-            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
+            "Url": "{{context.utils.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.utils.execShell('copyq currentWindowTitle')}}"
           }
         }
       }
@@ -40,11 +40,11 @@
       "params": {
         "note": {
           "deckName": "Default",
-          "modelName": "Cloze",
+          "modelName": "@Cloze",
           "fields": {
             "Text": "{{context.clipboard.readText('selection')}}",
-            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
-            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
+            "Url": "{{context.utils.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.utils.execShell('copyq currentWindowTitle')}}"
           }
         }
       }
@@ -57,11 +57,11 @@
       "params": {
         "note": {
           "deckName": "Default",
-          "modelName": "Basic",
+          "modelName": "@Basic",
           "fields": {
             "Front": "{{context.clipboard.readHTML('selection')}}",
-            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
-            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
+            "Url": "{{context.utils.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.utils.execShell('copyq currentWindowTitle')}}"
           }
         }
       }
@@ -74,11 +74,11 @@
       "params": {
         "note": {
           "deckName": "Default",
-          "modelName": "Basic",
+          "modelName": "@Basic",
           "fields": {
             "Back": "{{context.clipboard.readHTML('selection')}}",
-            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
-            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
+            "Url": "{{context.utils.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.utils.execShell('copyq currentWindowTitle')}}"
           }
         }
       }
@@ -91,11 +91,62 @@
       "params": {
         "note": {
           "deckName": "Default",
-          "modelName": "Cloze",
+          "modelName": "@Cloze",
           "fields": {
             "Text": "{{context.clipboard.readHTML('selection')}}",
-            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
-            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
+            "Url": "{{context.utils.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.utils.execShell('copyq currentWindowTitle')}}"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "Basic-Front-Code",
+    "anki": {
+      "action": "guiAddCards",
+      "params": {
+        "note": {
+          "deckName": "Default",
+          "modelName": "@Basic",
+          "fields": {
+            "Front": "{{context.utils.wrapCode(context.clipboard.readText('selection'))}}",
+            "Url": "{{context.utils.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.utils.execShell('copyq currentWindowTitle')}}"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "Basic-Back-Code",
+    "anki": {
+      "action": "guiAddCards",
+      "params": {
+        "note": {
+          "deckName": "Default",
+          "modelName": "@Basic",
+          "fields": {
+            "Back": "{{context.utils.wrapCode(context.clipboard.readText('selection'))}}",
+            "Url": "{{context.utils.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.utils.execShell('copyq currentWindowTitle')}}"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "Cloze-Text-Code",
+    "anki": {
+      "action": "guiAddCards",
+      "params": {
+        "note": {
+          "deckName": "Default",
+          "modelName": "@Cloze",
+          "fields": {
+            "Text": "{{context.utils.wrapCode(context.clipboard.readText('selection'))}}",
+            "Url": "{{context.utils.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.utils.execShell('copyq currentWindowTitle')}}"
           }
         }
       }
@@ -114,8 +165,8 @@
             "Word": "{{context.pluginResult.Word}}",
             "Exp": "{{context.pluginResult.Exp}}",
             "Phone": "{{context.pluginResult.Phone}}",
-            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
-            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
+            "Url": "{{context.utils.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.utils.execShell('copyq currentWindowTitle')}}"
           },
           "audio": [
             {
@@ -136,15 +187,23 @@
       "params": {
         "note": {
           "deckName": "Default",
-          "modelName": "Basic",
+          "modelName": "@Basic",
           "fields": {
             "Front": "{{context.pluginResult.eq(1).html() || ''}}",
             "Back": "{{context.pluginResult.eq(0).html() || ''}}",
-            "Url": "{{context.execShell('copyq selection text/x-moz-url-priv')}}",
-            "Title": "{{context.execShell('copyq currentWindowTitle')}}"
+            "Url": "{{context.utils.execShell('copyq selection text/x-moz-url-priv')}}",
+            "Title": "{{context.utils.execShell('copyq currentWindowTitle')}}"
           }
         }
       }
+    }
+  },
+  {
+    "name": "obsidian inbox",
+    "outPlugin": "file",
+    "file": {
+      "file": "/home/user/Obsidian/Note/Inbox/{{Date.now()}}.md",
+      "data": "{{context.clipboard.readHTML('selection') || context.clipboard.readText('selection')}} \n\n\n {{context.utils.execShell('copyq currentWindowTitle')}} \n {{context.utils.execShell('copyq selection text/x-moz-url-priv')}}"
     }
   }
 ]

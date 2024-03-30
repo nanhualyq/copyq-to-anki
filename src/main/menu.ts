@@ -1,7 +1,7 @@
 import { cloneDeepWith } from 'lodash'
 import { clipboard } from 'electron'
-import { execSync } from 'child_process'
 import { verbose } from 'electron-log'
+import * as utils from './utils'
 
 interface Menu {
   name: string
@@ -9,14 +9,10 @@ interface Menu {
   outPlugin: string
 }
 
-function execShell(code: string): string {
-  return execSync(code).toString().trim()
-}
-
 function execCode(pluginResult: unknown, code: string): string {
   const f = Function('context', `return ${code}`)
   try {
-    return f({ pluginResult, clipboard, execShell })
+    return f({ pluginResult, clipboard, utils })
   } catch (error) {
     return error + ''
   }
