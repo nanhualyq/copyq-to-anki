@@ -21,7 +21,7 @@ function execMenu(_e, menu): void {
   win?.on('closed', () =>
     setTimeout(() => {
       execMenuReal(menu)
-    }, 0)
+    }, 100)
   )
   win?.close()
 }
