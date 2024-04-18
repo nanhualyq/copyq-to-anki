@@ -18,8 +18,12 @@ function getLogs(): string {
 
 function execMenu(_e, menu): void {
   const win = getWindow(true)
+  win?.on('closed', () =>
+    setTimeout(() => {
+      execMenuReal(menu)
+    }, 0)
+  )
   win?.close()
-  win?.on('closed', () => execMenuReal(menu))
 }
 
 const map: { [key: string]: (event: Electron.IpcMainInvokeEvent, ...args: any[]) => any } = {
