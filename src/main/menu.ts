@@ -30,8 +30,15 @@ export async function execMenu(menu: Menu): Promise<void> {
   if (typeof outPlugin !== 'function') {
     throw `${menu.outPlugin} is not a valid plugin`
   }
+  // pre fill basic info that is not need pluginResult, like Url/Title.
+  const basicMenu = cloneDeepWith(menu, function (val) {
+    if (typeof val === 'string' && !val.includes('pluginResult')) {
+      return val.replaceAll(/\{\{(.+?)\}\}/g, (_m, p1) => execCode(null, p1))
+    }
+    return
+  })
   preAction((pluginResult) => {
-    const newMenu = cloneDeepWith(menu, function (val) {
+    const newMenu = cloneDeepWith(basicMenu, function (val) {
       if (typeof val === 'string') {
         return val.replaceAll(/\{\{(.+?)\}\}/g, (_m, p1) => execCode(pluginResult, p1))
       }
